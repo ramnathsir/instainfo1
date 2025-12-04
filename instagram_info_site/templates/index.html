@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instagram Info Fetcher</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f7f8fa; text-align: center; }
+    form { margin-top: 50px; }
+    input { padding: 10px; width: 250px; font-size: 16px; }
+    button { padding: 10px 20px; font-size: 16px; cursor: pointer; }
+    .info { margin: 30px auto; width: 60%; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    img { border-radius: 10px; }
+  </style>
+</head>
+<body>
+  <h1>📸 Instagram Info Fetcher</h1>
+  <form method="POST">
+    <input type="text" name="username" placeholder="Enter Instagram username" required>
+    <button type="submit">Fetch Info</button>
+  </form>
+
+  {% if error %}
+    <p style="color: red;">❌ {{ error }}</p>
+  {% endif %}
+
+  {% if data %}
+  <div class="info">
+    <img src="{{ data['Profile Pic URL'] }}" width="150"><br><br>
+    <strong>Username:</strong> {{ data['Username'] }}<br>
+    <strong>Full Name:</strong> {{ data['Full Name'] }}<br>
+    <strong>User ID:</strong> {{ data['User ID'] }}<br>
+    <strong>Followers:</strong> {{ data['Followers'] }}<br>
+    <strong>Following:</strong> {{ data['Following'] }}<br>
+    <strong>Posts:</strong> {{ data['Posts'] }}<br>
+    <strong>Verified:</strong> {{ data['Verified'] }}<br>
+    <strong>Private:</strong> {{ data['Private'] }}<br>
+    <p><strong>Bio:</strong> {{ data['Bio'] }}</p>
+  </div>
+  {% endif %}
+</body>
+
++</html>
